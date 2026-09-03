@@ -1,0 +1,21 @@
+# Deployment checklist
+
+- [ ] Create Supabase project.
+- [ ] Run `supabase/schema.sql`.
+- [ ] Set `SUPABASE_URL` in Netlify.
+- [ ] Set `SUPABASE_SERVICE_ROLE_KEY` in Netlify as a secret/server variable.
+- [ ] Set a unique `MASTER_BOOTSTRAP_TOKEN` in Netlify, then create the first Master Owner from the first-time setup card.
+- [ ] Deploy to Netlify.
+- [ ] Verify `/.netlify/functions/api` responds.
+- [ ] Verify Master login and customer account creation.
+- [ ] Verify `/shop/<software-code>` customer links.
+- [ ] Verify Demo/Trial 7–90 day selection.
+- [ ] Verify permissions and locked/access semantics.
+- [ ] Verify license pricing, discount activation and customer display.
+- [ ] Verify payment slip request/review/key generation.
+- [ ] Verify First Purchase one-time lifecycle.
+- [ ] Verify machine and reinstallation limits.
+- [ ] Verify Support Team workspace isolation.
+- [ ] Verify a customer request notifies Master and Support without granting Support access.
+- [ ] Verify every temporary Support-session action appears in Master Notifications.
+- [ ] Keep the original Google Apps project untouched.

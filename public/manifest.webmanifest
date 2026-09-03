@@ -1,0 +1,14 @@
+{
+  "name": "SHAN POS SYSTEMS",
+  "short_name": "SHAN POS",
+  "description": "SHAN POS desktop-installable sales, stock, licensing and support workspace application.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f3d65",
+  "icons": [
+    { "src": "/assets/SHAN_POS_SYSTEMS_LOGO.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/assets/SHAN_POS_SYSTEMS_LOGO.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

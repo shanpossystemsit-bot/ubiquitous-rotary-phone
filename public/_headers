@@ -1,0 +1,7 @@
+/*
+  Link: </manifest.webmanifest>; rel="manifest"
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json
