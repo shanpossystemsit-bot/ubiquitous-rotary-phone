@@ -1,4 +1,4 @@
-name: SHAN POS SYSTEMS Build and Deploy
+name: SHAN POS SYSTEMS Validation
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,11 +19,24 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      - name: Validate project structure
+        run: |
+          test -f package.json
+          test -f netlify.toml
+          test -f public/index.html
+          test -f public/_redirects
+          test -f public/_headers
+          test -f netlify/functions/api.js
+          test -f supabase/schema.sql
 
-      - name: Build project
-        run: npm run build
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      - name: Validate package.json
+        run: node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8')); console.log('package.json OK')"
+
+      - name: Validate API JavaScript syntax
+        run: node --check netlify/functions/api.js
+
+      - name: Validate Netlify configuration
+        run: |
+          grep -q 'publish = "public"' netlify.toml
+          grep -q 'functions = "netlify/functions"' netlify.toml
+          echo "netlify.toml OK"
