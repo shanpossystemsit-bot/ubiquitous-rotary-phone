@@ -1,5 +1,6 @@
-const fs=require('fs'),vm=require('vm'),crypto=require('crypto'),path=require('path');
-const sandbox={console,crypto,Buffer,process,require,setTimeout,clearTimeout,URL,URLSearchParams};sandbox.globalThis=sandbox;
+const fs=require('fs'),vm=require('vm'),crypto=require('crypto'),path=require('path'),AdmZip=require('adm-zip');
+const runtimeRequire=name=>name==='adm-zip'?AdmZip:require(name);
+const sandbox={console,crypto,Buffer,process,require:runtimeRequire,setTimeout,clearTimeout,URL,URLSearchParams};sandbox.globalThis=sandbox;
 vm.runInNewContext(fs.readFileSync(path.join(__dirname,'runtime-prelude.js'),'utf8'),sandbox,{filename:'runtime-prelude.js'});
 vm.runInNewContext(fs.readFileSync(path.join(__dirname,'Code.gs'),'utf8'),sandbox,{filename:'Code.gs'});
 vm.runInNewContext(fs.readFileSync(path.join(__dirname,'security-overrides.js'),'utf8'),sandbox,{filename:'security-overrides.js'});
